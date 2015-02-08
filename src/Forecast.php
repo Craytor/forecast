@@ -46,13 +46,13 @@ class Forecast
     {
         $success = false;
 
-        $response = $this->getHttpClient->get($this->getEndpointUrl()."/".$latitude.",".$longitude.((is_null($time)) ? '' : ','.$time));
+        $response = $this->getHttpClient()->get($this->getEndpointUrl()."/".$latitude.",".$longitude.((is_null($time)) ? '' : ','.$time));
 
         return $response;
     }
 
     /**
-     * Builds the endopoint url.
+     * Builds the endpoint url.
      *
      * @return string
      */
