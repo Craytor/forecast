@@ -4,7 +4,8 @@ namespace MyWeather\Forecast;
 
 use GuzzleHttp\Client;
 
-class ForecastGateway {
+class ForecastGateway
+{
 
     /**
      * Gateway api endpoint.
