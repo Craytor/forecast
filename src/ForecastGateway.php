@@ -11,7 +11,7 @@ class ForecastGateway
      *
      * @var string
      */
-    protected $endpoint = 'https://api.forecast.io';
+    protected $endpoint = 'https://api.forecast.io/forecast';
 
     /**
      * The http client.
@@ -28,7 +28,7 @@ class ForecastGateway
     protected $apiKey;
 
     /**
-     * Create a new webhook gateway instance.
+     * Create a new Forecast gateway instance.
      *
      * @param \GuzzleHttp\Client $client
      * @param string             $apiKey
@@ -50,10 +50,14 @@ class ForecastGateway
      * @param string $time
      * @param array  $options
      *
-     * @return void
+     * @return array $response
      */
-    public function request($latitude, $longitude, $time = null, $options = [])
+    public function request($latitude, $longitude, $time = null, array $options = [])
     {
-        // guzzle request here
+        $success = false;
+
+        $response = $this->client->get($endpoint."/".$this->apiKey."/".$latitude.",".$longitude.((is_null($time)) ? '' : ','.$time));
+
+        return $response;
     }
 }
