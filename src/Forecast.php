@@ -48,7 +48,16 @@ class Forecast
 
         $response = $this->getHttpClient()->get($this->getEndpointUrl()."/".$latitude.",".$longitude.((is_null($time)) ? '' : ','.$time));
 
-        return $response;
+        $this->response = $response;
+    }
+
+    /**
+     * Returns the currently array.
+     *
+     * @return array $this->response['currently']
+     */
+    public function currently() {
+        return $this->response['currently'];
     }
 
     /**
@@ -70,4 +79,6 @@ class Forecast
     {
         return new GuzzleClient();
     }
+
+
 }
