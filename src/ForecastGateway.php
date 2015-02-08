@@ -23,21 +23,37 @@ class ForecastGateway
     /**
      * Configuration options.
      *
-     * @var string[]
+     * @var string
      */
-    protected $config;
+    protected $apiKey;
 
     /**
      * Create a new webhook gateway instance.
      *
      * @param \GuzzleHttp\Client $client
-     * @param string[]           $config
+     * @param string             $apiKey
      *
      * @return void
      */
-    public function __construct(Client $client, array $config)
+    public function __construct(Client $client, $apiKey)
     {
         $this->client = $client;
-        $this->config = $config;
+        $this->apiKey = $apiKey;
+    }
+
+
+    /**
+     * Create an api call instance.
+     *
+     * @param string $latitude
+     * @param string $longitude
+     * @param string $time
+     * @param array  $options
+     *
+     * @return void
+     */
+    public function request($latitude, $longitude, $time = null, $options = [])
+    {
+        // guzzle request here
     }
 }

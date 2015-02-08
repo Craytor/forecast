@@ -7,16 +7,16 @@ use GuzzleHttp\Client;
 class ForecastFactory
 {
     /**
-     * Create a new webhook gateway instance.
+     * Create a new forecast gateway instance.
      *
-     * @param string[] $config
+     * @param string $apiKey
      *
      * @return \MyWeather\Forecast\ForecastGateway
      */
-    public function make(array $config)
+    public function make($apiKey)
     {
         $client = new Client();
-        
+
         return new ForecastGateway($client, $config);
     }
 }
