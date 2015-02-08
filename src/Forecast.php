@@ -2,9 +2,9 @@
 
 namespace MyWeather\Forecast;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\Client as GuzzleClient;
 
-class ForecastGateway
+class Forecast
 {
     /**
      * Gateway api endpoint.
@@ -12,13 +12,6 @@ class ForecastGateway
      * @var string
      */
     protected $endpoint = 'https://api.forecast.io/forecast';
-
-    /**
-     * The http client.
-     *
-     * @var \GuzzleHttp\Client
-     */
-    protected $client;
 
     /**
      * Configuration options.
@@ -30,17 +23,14 @@ class ForecastGateway
     /**
      * Create a new Forecast gateway instance.
      *
-     * @param \GuzzleHttp\Client $client
-     * @param string             $apiKey
+     * @param string $apiKey
      *
      * @return void
      */
-    public function __construct(Client $client, $apiKey)
+    public function __construct($apiKey)
     {
-        $this->client = $client;
         $this->apiKey = $apiKey;
     }
-
 
     /**
      * Create an api call instance.
@@ -56,8 +46,28 @@ class ForecastGateway
     {
         $success = false;
 
-        $response = $this->client->get($endpoint."/".$this->apiKey."/".$latitude.",".$longitude.((is_null($time)) ? '' : ','.$time));
+        $response = $this->getHttpClient->get($this->getEndpointUrl()."/".$latitude.",".$longitude.((is_null($time)) ? '' : ','.$time));
 
         return $response;
+    }
+
+    /**
+     * Builds the endopoint url.
+     *
+     * @return string
+     */
+    protected function getEndpointUrl()
+    {
+        return $this->endpoint."/".$this->apiKey;
+    }
+
+    /**
+     * Get the http client.
+     *
+     * @return \Guzzle\Client
+     */
+    protected function getHttpClient()
+    {
+        return new GuzzleClient();
     }
 }
