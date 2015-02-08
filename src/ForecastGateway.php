@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 
 class ForecastGateway
 {
-
     /**
      * Gateway api endpoint.
      *
@@ -41,5 +40,4 @@ class ForecastGateway
         $this->client = $client;
         $this->config = $config;
     }
-
 }

@@ -16,6 +16,7 @@ class ForecastFactory
     public function make(array $config)
     {
         $client = new Client();
+        
         return new ForecastGateway($client, $config);
     }
 }
