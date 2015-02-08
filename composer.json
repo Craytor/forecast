@@ -1,0 +1,31 @@
+{
+    "name": "myweather/forecast",
+    "description": "A php wrapper for the Forecast.io API.",
+    "license": "MIT",
+    "keywords": ["forecast", "php", "weather"],
+    "authors": [
+        {
+            "name": "Tyler Youschak",
+            "email": "tyleryouschak@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "guzzlehttp/guzzle": "~5.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MyWeather\\Forecast\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MyWeather\\Forecast\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stabilitiy": "dev",
+    "prefer-stable": true
+}
