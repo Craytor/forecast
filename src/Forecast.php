@@ -44,8 +44,6 @@ class Forecast
      */
     public function request($latitude, $longitude, $time = null, array $options = [])
     {
-        $success = false;
-
         $response = $this->getHttpClient()->get($this->getEndpointUrl()."/".$latitude.",".$longitude.((is_null($time)) ? '' : ','.$time));
 
         $this->response = $response;
