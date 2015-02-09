@@ -56,7 +56,8 @@ class Forecast
      *
      * @return array $this->response['currently']
      */
-    public function currently() {
+    public function currently()
+    {
         return $this->response['currently'];
     }
 
@@ -79,6 +80,4 @@ class Forecast
     {
         return new GuzzleClient();
     }
-
-
 }
