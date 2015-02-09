@@ -62,6 +62,46 @@ class Forecast
     }
 
     /**
+     * Returns the minutely array.
+     *
+     * @return array $this->response['minutely']
+     */
+    public function minutely()
+    {
+        return $this->response['minutely'];
+    }
+
+    /**
+     * Returns the hourly array.
+     *
+     * @return array $this->response['hourly']
+     */
+    public function hourly()
+    {
+        return $this->response['hourly'];
+    }
+
+    /**
+     * Returns the daily array.
+     *
+     * @return array $this->response['daily']
+     */
+    public function daily()
+    {
+        return $this->response['daily'];
+    }
+
+    /**
+     * Returns the alerts array.
+     *
+     * @return array $this->response['alerts']
+     */
+    public function alerts()
+    {
+        return $this->response['alerts'];
+    }
+
+    /**
      * Builds the endpoint url.
      *
      * @return string
