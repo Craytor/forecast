@@ -1,9 +1,11 @@
 # forecast
 
 ```
-use MyWeathre\Forecast;
+use MyWeather\Forecast;
 
 $forecast = Forecast($apiKey);
-$response = $forecast->request('lat','lng')->currently();
-print_r($response);
+$forecast->request('lat','lng');
+$currently = $forecast->currently;
+
+print_r($currently);
 ```
