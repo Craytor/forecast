@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MyWeather\\Forecast\\": "src/"
+            "MyWeather\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MyWeather\\Forecast\\Tests\\": "tests/"
+            "MyWeather\\Tests\\": "tests/"
         }
     },
     "minimum-stabilitiy": "dev",

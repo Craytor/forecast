@@ -1,6 +1,6 @@
 <?php
 
-namespace MyWeather\Forecast;
+namespace MyWeather;
 
 use GuzzleHttp\Client as GuzzleClient;
 
