@@ -46,7 +46,7 @@ class Forecast
     {
         $response = $this->getHttpClient()->get($this->getEndpointUrl()."/".$latitude.",".$longitude.((is_null($time)) ? '' : ','.$time));
 
-        $this->response = $response;
+        $this->response = $response->json();
     }
 
     /**
