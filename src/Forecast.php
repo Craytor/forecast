@@ -2,120 +2,76 @@
 
 namespace MyWeather;
 
-use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Client;
 
 class Forecast
 {
     /**
-     * Gateway api endpoint.
+     * The endpoint.
      *
      * @var string
      */
     protected $endpoint = 'https://api.forecast.io/forecast';
 
     /**
-     * Configuration options.
+     * The api key.
      *
      * @var string
      */
     protected $apiKey;
 
     /**
-     * Create a new Forecast gateway instance.
+     * The guzzle client.
      *
-     * @param string $apiKey
+     * @var string
+     */
+    protected $guzzleClient;
+
+    /**
+     * Create a new forecast instance.
+     *
+     * @param string                  $apiKey
+     * @param \GuzzleHttp\Client|null $client
      *
      * @return void
      */
-    public function __construct($apiKey)
+    public function __construct($apiKey, Client $client = null)
     {
         $this->apiKey = $apiKey;
+        $this->guzzleClient = $client ?: new Client();
     }
 
     /**
-     * Create an api call instance.
+     * Call the api.
      *
-     * @param string $latitude
-     * @param string $longitude
-     * @param string $time
-     * @param array  $options
+     * @param string      $latitude
+     * @param string      $longitude
+     * @param string|null $time
      *
-     * @return array $response
+     * @return array
      */
-    public function request($latitude, $longitude, $time = null, array $options = [])
+    public function request($latitude, $longitude, $time = null)
     {
-        $response = $this->getHttpClient()->get($this->getEndpointUrl()."/".$latitude.",".$longitude.((is_null($time)) ? '' : ','.$time));
+        $url = $this->buildUrl($latitude, $longitude, $time);
 
-        $this->response = $response->json();
+        $response = $this->guzzleClient->get($url);
+
+        return $response->json();
     }
 
     /**
-     * Returns the currently array.
+     * Builds the url.
      *
-     * @return array $this->response['currently']
-     */
-    public function currently()
-    {
-        return $this->response['currently'];
-    }
-
-    /**
-     * Returns the minutely array.
-     *
-     * @return array $this->response['minutely']
-     */
-    public function minutely()
-    {
-        return $this->response['minutely'];
-    }
-
-    /**
-     * Returns the hourly array.
-     *
-     * @return array $this->response['hourly']
-     */
-    public function hourly()
-    {
-        return $this->response['hourly'];
-    }
-
-    /**
-     * Returns the daily array.
-     *
-     * @return array $this->response['daily']
-     */
-    public function daily()
-    {
-        return $this->response['daily'];
-    }
-
-    /**
-     * Returns the alerts array.
-     *
-     * @return array $this->response['alerts']
-     */
-    public function alerts()
-    {
-        return $this->response['alerts'];
-    }
-
-    /**
-     * Builds the endpoint url.
+     * @param string      $latitude
+     * @param string      $longitude
+     * @param string|null $time
      *
      * @return string
      */
-    protected function getEndpointUrl()
+    protected function buildUrl($latitude, $longitude, $time)
     {
-        return $this->endpoint."/".$this->apiKey;
-    }
+        $time = is_null($time) ? '' : ','.$time;
 
-    /**
-     * Get the http client.
-     *
-     * @return \Guzzle\Client
-     */
-    protected function getHttpClient()
-    {
-        return new GuzzleClient();
+        return $this->endpoint.'/'.$this->apiKey.'/'.$latitude.','.$longitude.$time;
     }
 }
