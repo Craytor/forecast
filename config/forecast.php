@@ -11,6 +11,6 @@ return [
     | Your MyWeather API key.
     |
     */
-    'apiKey' => 'your-api-key'
+    'apiKey' => 'your-api-key',
 
 ];
