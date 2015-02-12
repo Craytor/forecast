@@ -7,71 +7,71 @@ use GuzzleHttp\Client;
 class Forecast
 {
     /**
-     * The endpoint.
+     * The raw data.
      *
-     * @var string
+     * @var array
      */
-    protected $endpoint = 'https://api.forecast.io/forecast';
-
-    /**
-     * The api key.
-     *
-     * @var string
-     */
-    protected $apiKey;
-
-    /**
-     * The guzzle client.
-     *
-     * @var string
-     */
-    protected $guzzleClient;
+    protected $data;
 
     /**
      * Create a new forecast instance.
      *
-     * @param string                  $apiKey
-     * @param \GuzzleHttp\Client|null $client
+     * @param array $data
      *
      * @return void
      */
-    public function __construct($apiKey, Client $client = null)
+    public function __construct(array $data)
     {
-        $this->apiKey = $apiKey;
-        $this->guzzleClient = $client ?: new Client();
+        $this->data = $data;
     }
 
     /**
-     * Call the api.
-     *
-     * @param string      $latitude
-     * @param string      $longitude
-     * @param string|null $time
+     * Returns the currently array.
      *
      * @return array
      */
-    public function request($latitude, $longitude, $time = null)
+    public function currently()
     {
-        $url = $this->buildUrl($latitude, $longitude, $time);
-
-        $response = $this->guzzleClient->get($url);
-
-        return $response->json();
+        return $this->data['currently'];
     }
 
     /**
-     * Builds the url.
+     * Returns the minutely array.
      *
-     * @param string      $latitude
-     * @param string      $longitude
-     * @param string|null $time
-     *
-     * @return string
+     * @return array
      */
-    protected function buildUrl($latitude, $longitude, $time)
+    public function minutely()
     {
-        $time = is_null($time) ? '' : ','.$time;
+        return $this->data['minutely'];
+    }
 
-        return $this->endpoint.'/'.$this->apiKey.'/'.$latitude.','.$longitude.$time;
+    /**
+     * Returns the hourly array.
+     *
+     * @return array
+     */
+    public function hourly()
+    {
+        return $this->data['hourly'];
+    }
+
+    /**
+     * Returns the daily array.
+     *
+     * @return array
+     */
+    public function daily()
+    {
+        return $this->data['daily'];
+    }
+
+    /**
+     * Returns the alerts array.
+     *
+     * @return array
+     */
+    public function alerts()
+    {
+        return $this->data['alerts'];
     }
 }
