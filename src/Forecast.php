@@ -2,8 +2,6 @@
 
 namespace MyWeather;
 
-use GuzzleHttp\Client;
-
 class Forecast
 {
     /**
