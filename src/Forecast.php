@@ -26,50 +26,58 @@ class Forecast
     /**
      * Returns the currently array.
      *
-     * @return array
+     * @return \MyWeather\Response
      */
     public function currently()
     {
-        return $this->data['currently'];
+        return (new Response())->setRaw($this->data['currently'])->map([
+            'summary' => $this->data['currently']['summary'],
+            'icon'    => $this->data['currently']['icon'],
+            'data'    => $this->data['currently'],
+        ]);
     }
 
     /**
      * Returns the minutely array.
      *
-     * @return array
+     * @return \MyWeather\Response
      */
     public function minutely()
     {
-        return $this->data['minutely'];
+        return (new Response())->setRaw($this->data['minutely'])->map($this->data['minutely']);
     }
 
     /**
      * Returns the hourly array.
      *
-     * @return array
+     * @return \MyWeather\Response
      */
     public function hourly()
     {
-        return $this->data['hourly'];
+        return (new Response())->setRaw($this->data['hourly'])->map($this->data['hourly']);
     }
 
     /**
      * Returns the daily array.
      *
-     * @return array
+     * @return \MyWeather\Response
      */
     public function daily()
     {
-        return $this->data['daily'];
+        return (new Response())->setRaw($this->data['daily'])->map($this->data['daily']);
     }
 
     /**
      * Returns the alerts array.
      *
-     * @return array
+     * @return \MyWeather\Response
      */
     public function alerts()
     {
-        return $this->data['alerts'];
+        return (new Response())->setRaw($this->data['alerts'])->map([
+            'summary' => $this->data['alerts']['summary'],
+            'icon'    => 'alerts',
+            'data'    => $this->data['alerts'],
+        ]);
     }
 }
