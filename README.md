@@ -1,7 +1,7 @@
 MyWeather Forecast
 ==================
 
-MyWeather Forecast was created by, and is maintained by [Tyler Youschak](https://tjyouschak.me). Forecast uses [Forecast.io](http://forcast.io)'s weather API, so a free API key will be required. I've chosen Forecast.io due to the really inexpensive API, which you get 1,000 free calls a day, and if you go over that 10,000 calls, it's one-center per 10,000 calls.
+MyWeather Forecast was created by, and is maintained by [Tyler Youschak](http://tjyouschak.me). MyWeather Forecast uses [Forecast.io](https://developer.forecast.io/)'s weather API, so a free API key will be required. I've chosen Forecast.io due to the really inexpensive API, which supplies you with 1,000 free calls per day. If you go over 1,000 calls, it's only one-cent per 10,000 calls.
 
 
 ## Installation
@@ -21,6 +21,16 @@ If you're using Laravel 5, then you can register our service provider. Open up `
 
 ## Usage
 
+Usage of MyWeather Forecast is quite simple. To get started, you must first _use_ our package. This will allow you to start using our package, here's an example:
+```
+use MyWeather\ForecastClient;
+```
+Alright! We are now using the package, but how and where are we going to declare our API key (provided by [Forecast.io](https://developer.forecast.io/))? Well, let's take a look:
+* You can use it by typing the following: `$client = ForecastClient($apiKey);`. This will go ahead and set your API key for your request.
+* Now your going to want to set the latitude (lat) and longitude (lng) of the location your trying to find. It may be best to use Javascript and ask the person if you can use their location, or you can just hard code in a geo-location look up.
+* Now, let's get the viddles! You can now (since you have declared your API key and lat & lng), use our `currently`, `minutely`, `hourly`, and `daily` selectors which will return that information in an array.
+
+Here's a look at all of that combined:
 ```
 use MyWeather\ForecastClient;
 
