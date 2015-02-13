@@ -16,6 +16,9 @@
     "require-dev": {
         "phpunit/phpunit": "~4.0"
     },
+    "suggest": {
+        "illuminate/support": "Enables Laravel support (~5.0)."
+    },
     "autoload": {
         "psr-4": {
             "MyWeather\\": "src/"
@@ -26,6 +29,9 @@
             "MyWeather\\Tests\\": "tests/"
         }
     },
-    "minimum-stabilitiy": "dev",
-    "prefer-stable": true
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
 }
