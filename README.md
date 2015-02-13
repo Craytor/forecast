@@ -14,7 +14,7 @@ To get the latest version of MyWeather Forecast, simply add the following line t
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
-If you're using Laravel 5, then you can register our service provider. Open up `config/app.php` and add the following to the `providers` key.
+If you're using Laravel 5, then you can register our service provider. Open up `config/app.php` and add the following to the `providers` array.
 
 * `'MyWeather\ForecastServiceProvider'`
 
@@ -29,10 +29,11 @@ Alright! We are now using the package, but how and where are we going to declare
 * Now, let's get the viddles! You can now (since you have declared your API key and lat & lng), use our `currently`, `minutely`, `hourly`, and `daily` selectors which will return that information in an array.
 
 Here's a look at all of that combined:
-```
+
+```php
 use MyWeather\ForecastClient;
 
-$client = ForecastClient($apiKey);
+$client = new ForecastClient($apiKey);
 $forecast = $client->get('lat','lng');
 $currently = $forecast->currently();
 ```
