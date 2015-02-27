@@ -72,4 +72,14 @@ class Forecast
     {
         return $this->data['alerts'];
     }
+
+    /**
+     * Returns the timezone string.
+     *
+     * @return array
+     */
+    public function timezone()
+    {
+        return $this->data['timezone'];
+    }
 }
