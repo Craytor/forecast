@@ -37,3 +37,6 @@ $client = new ForecastClient($apiKey);
 $forecast = $client->get('lat','lng');
 $currently = $forecast->currently();
 ```
+
+## Contribute
+Have an idea of a new data selector that should be added? Or do you have an idea that will make this package even better? Open an issue report, and we'll have a gander!
