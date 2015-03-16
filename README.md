@@ -3,6 +3,8 @@ MyWeather Forecast
 
 MyWeather Forecast was created by, and is maintained by [Tyler Youschak](http://tjyouschak.me). MyWeather Forecast uses [Forecast.io](https://developer.forecast.io/)'s weather API, so a free API key will be required. I've chosen Forecast.io due to the really inexpensive API, which supplies you with 1,000 free calls per day. If you go over 1,000 calls, it's only one-cent per 10,000 calls.
 
+## Requirements
+Before installing Forecast, you need to make sure you have `cURL` installed on your server! Chances are this will already be completed!
 
 ## Installation
 
