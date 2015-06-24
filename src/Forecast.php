@@ -84,12 +84,12 @@ class Forecast
     }
 
     /**
-     * Returns the timezone string.
+     * Returns the offset string.
      *
      * @return array
      */
     public function offset()
     {
-        return $this->data['timezone'];
+        return $this->data['offset'];
     }
 }
